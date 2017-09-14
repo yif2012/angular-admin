@@ -22,6 +22,7 @@
         "../node_modules/bootstrap/dist/css/bootstrap.min.css",
         "../node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
         "./assets/reset.css",
+        "./assets/font/css/open-iconic-bootstrap.min.css",
         "styles.css"
       ],
       "scripts": [],

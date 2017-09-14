@@ -9,11 +9,24 @@
             <ng-template [ngIf]="item.children">
                 <div class="level-1" (click)="toggleMenu($event,item)" >
                     <span>{{ item.name }}</span>
-                    <i class="fr">{{ item.isOpen ? 'V' : '>' }}</i>
+                    <i class="fr"><span style="transition:all .1s;" class="oi oi-chevron-right" [ngClass]="{'cd': item.isOpen}"></span></i>
                 </div>
-                <ul *ngIf="item.isOpen">
-                    <li *ngFor="let menu of item.children">
-                        <a [routerLink]="menu.url" routerLinkActive="active" >{{ menu.name }}</a>
+                <ul class="heading-children" [ngClass]="{'collapsed': !item.isOpen, 'expanded': item.isOpen}">
+                    <li class="level-2" *ngFor="let menu of item.children">
+                        <ng-template [ngIf]="!menu.children">
+                            <a [routerLink]="menu.url" routerLinkActive="active" >{{ menu.name }}</a>
+                        </ng-template>
+                        <ng-template [ngIf]="menu.children">
+                            <div class="level-3" (click)="toggleMenu($event,menu)">
+                                <span>{{ menu.name }}</span>
+                                <i class="fr"><span style="transition:all .1s;" class="oi oi-chevron-right" [ngClass]="{'cd': menu.isOpen}"></span></i>
+                            </div>
+                            <ul class="heading-children" [ngClass]="{'collapsed': !menu.isOpen, 'expanded': menu.isOpen}">
+                                <li *ngFor="let level2 of menu.children">
+                                    <a [routerLink]="level2.url" routerLinkActive="active" >{{ level2.name }}</a>
+                                </li>
+                            </ul>
+                        </ng-template>
                     </li>
                 </ul>
             </ng-template>

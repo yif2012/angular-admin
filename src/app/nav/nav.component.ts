@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav',
@@ -10,7 +11,7 @@ export class NavComponent implements OnInit {
   menu: Boolean;
 
   menuArr: Menu[];
-  constructor() { 
+  constructor(private router: Router) {
     this.menuArr = [{
       name: '快速上手',
       url: '/home/gettingStarted',
@@ -22,17 +23,54 @@ export class NavComponent implements OnInit {
       isOpen: false,
       children: [{
         name: '1．简介',
-        url: '/home/tutorial'
+        url: '/home/tutorial',
+        isOpen: false,
+        children: false
       },{
         name: '2．英雄编辑器',
-        url: '/home/heroEditor'        
+        url: '/home/heroEditor',
+        isOpen: false,
+        children: false
       }]
-    }]
+    },{
+      name: '核心知识',
+      url: '',
+      isOpen: false,
+      children: [{
+        name: '架构',
+        url: '/home/architecture',
+        isOpen: false,
+        children: false
+      },{
+        name: '模板与数据绑定',
+        url: '',
+        isOpen: false,
+        children: [{
+          name: '显示数据',
+          url: '/home/displayingData'
+        }]
+      }]
+    }];
   }
   ngOnInit() {
+    const currentUrl = this.router.routerState.snapshot.url;
+    for (let i = 0; i < this.menuArr.length; i++) {
+      const menu = this.menuArr[i];
+      if (menu.children) {
+        for (let j = 0; j < menu.children.length; j++) {
+          if (menu.children[j].url === currentUrl) {
+            this.menuArr[i].isOpen = true;
+            break;
+          }
+        }
+        // menu.children.forEach(item => {
+        //   if (item.url === currentUrl) return this.menuArr[i].isOpen = true;
+        // });
+      }
+    }
   }
   toggleMenu(e, menu) {
-    menu.isOpen = !menu.isOpen
+    menu.isOpen = !menu.isOpen;
   }
 }
 
