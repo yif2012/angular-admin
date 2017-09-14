@@ -1,0 +1,22 @@
+<nav class="nav" [ngClass]="{'close': !menu}">
+    <div class="menu">
+        <div *ngFor="let item of menuArr">
+            <ng-template [ngIf]="!item.children">
+                <div class="level-1">
+                    <a [routerLink]="item.url" routerLinkActive="active" >{{ item.name }}</a>
+                </div>
+            </ng-template>
+            <ng-template [ngIf]="item.children">
+                <div class="level-1" (click)="toggleMenu($event,item)" >
+                    <span>{{ item.name }}</span>
+                    <i class="fr">{{ item.isOpen ? 'V' : '>' }}</i>
+                </div>
+                <ul *ngIf="item.isOpen">
+                    <li *ngFor="let menu of item.children">
+                        <a [routerLink]="menu.url" routerLinkActive="active" >{{ menu.name }}</a>
+                    </li>
+                </ul>
+            </ng-template>
+        </div>
+    </div>
+</nav>

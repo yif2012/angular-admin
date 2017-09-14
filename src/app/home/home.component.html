@@ -1,0 +1,6 @@
+<app-header (changeType)="typeHandler($event)"></app-header>
+<app-nav [menu]="type"></app-nav>
+
+<div class="main_container" [ngClass]="{'main_container_left': type}" >
+    <router-outlet></router-outlet>
+</div>

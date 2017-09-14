@@ -1,0 +1,21 @@
+.header {
+    background-color: #1976d2;
+    padding: 0 16px;
+    height: 64px;
+    line-height: 64px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+}
+.header_right {
+    float: right;
+    color: #FFF;
+    cursor: pointer;    
+}
+.logout {
+    margin: 0 10px;
+}
+.user-info {
+    padding: 0 30px;
+}

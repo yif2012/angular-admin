@@ -1,0 +1,21 @@
+<alert *ngIf="alertInfo.show" [type]="alertInfo.type" [dismissOnTimeout]="alertInfo.time">
+  {{ alertInfo.msg }}
+</alert>
+<form class="content">
+  <div class="form-group">
+    <label for="exampleInputEmail1">用户名</label>
+    <input type="email" class="form-control" [(ngModel)]="userInfo.username" placeholder="用户名" name="username">
+    <small class="form-text text-muted">喔喔喔喔喔喔喔喔喔喔喔喔</small>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">密码</label>
+    <input type="password" class="form-control" [(ngModel)]="userInfo.password" placeholder="密码" name="password">
+  </div>
+  <div class="form-check">
+    <label class="form-check-label">
+      <input type="checkbox" class="form-check-input">
+      记住用户名
+    </label>
+  </div>
+  <button type="button" (click)="login()" class="btn btn-primary">登录</button>
+</form>

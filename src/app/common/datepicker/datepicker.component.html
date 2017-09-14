@@ -1,0 +1,3 @@
+<input type="text" bsDatepicker readonly [(bsValue)]="value" [bsConfig]="bsConfig" (bsValueChange)="emit()" #dp>
+{{value | date: 'yyyy-MM-dd'}}
+<button (click)="emit()">点击</button>

@@ -1,0 +1,8 @@
+.main_container {
+    padding: 80px 16px 16px;
+    min-height: 100vh;
+    transition: margin .5s;
+}
+.main_container_left {
+    margin-left: 260px;
+}

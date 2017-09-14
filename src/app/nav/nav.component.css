@@ -1,0 +1,32 @@
+.nav {
+    position: fixed;
+    top: 64px;
+    bottom: 0;
+    left: 0;
+    padding: 0;
+    width: 260px;
+    background-color: #fafafa;
+    box-shadow: 6px 0 6px rgba(0,0,0,.1);
+    height: calc(100vh - 64px);
+    transition:all .5s;
+    transform: translate3d(0,0,0);
+}
+.menu {
+    font-size: 14px;
+    margin-top: 16px;
+}
+.close {
+    transform: translate3d(-100%,0,0);
+}
+ul li {
+    margin-left: 20px;
+    padding: 5px;
+}
+.active {
+    color: red
+}
+.level-1 {
+    margin:5px 14px;
+    padding: 5px;
+    cursor: pointer;
+}
