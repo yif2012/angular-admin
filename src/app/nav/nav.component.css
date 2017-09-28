@@ -63,6 +63,3 @@ a {
     transition: visibility 275ms,opacity 275ms,max-height .28s;
     transition-timing-function: ease-out;
 }
-.menu>div:hover {
-    background-color: #dbdbdb;
-}

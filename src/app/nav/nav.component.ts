@@ -63,13 +63,10 @@ export class NavComponent implements OnInit {
             break;
           }
         }
-        // menu.children.forEach(item => {
-        //   if (item.url === currentUrl) return this.menuArr[i].isOpen = true;
-        // });
       }
     }
   }
-  toggleMenu(e, menu) {
+  toggleMenu(menu) {
     menu.isOpen = !menu.isOpen;
   }
 }

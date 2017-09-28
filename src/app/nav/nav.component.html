@@ -7,7 +7,7 @@
                 </div>
             </ng-template>
             <ng-template [ngIf]="item.children">
-                <div class="level-1" (click)="toggleMenu($event,item)" >
+                <div class="level-1" (click)="toggleMenu(item)" >
                     <span>{{ item.name }}</span>
                     <i class="fr"><span style="transition:all .1s;" class="oi oi-chevron-right" [ngClass]="{'cd': item.isOpen}"></span></i>
                 </div>
@@ -17,7 +17,7 @@
                             <a [routerLink]="menu.url" routerLinkActive="active" >{{ menu.name }}</a>
                         </ng-template>
                         <ng-template [ngIf]="menu.children">
-                            <div class="level-3" (click)="toggleMenu($event,menu)">
+                            <div class="level-3" (click)="toggleMenu(menu)">
                                 <span>{{ menu.name }}</span>
                                 <i class="fr"><span style="transition:all .1s;" class="oi oi-chevron-right" [ngClass]="{'cd': menu.isOpen}"></span></i>
                             </div>
