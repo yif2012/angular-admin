@@ -34,8 +34,7 @@ export class LoginComponent implements OnInit {
     this.http.post(url, data).toPromise().then(response => {
       const res: Code = response.json() as Code;
       if (res.code === 666) {
-        this.service.isLogin = true;
-        this.router.navigate(['home']);
+        this.router.navigate(['reload']);
       } else {
         this.alertInfo = { show:true, type: 'danger', msg: res.status, time: 0 };
       }

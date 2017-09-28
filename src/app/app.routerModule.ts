@@ -14,6 +14,7 @@ export const appRouters = [
   }, {
     path: 'home',
     component: HomeComponent,
+    canActivate: [UserInfo],
     children: [{
       path: 'gettingStarted',
       component: GettingStartedComponent
@@ -33,7 +34,6 @@ export const appRouters = [
     component: LoginComponent
   }, {
     path: 'reload',
-    component: ReloadComponent,
-    canActivate: [UserInfo]
+    component: ReloadComponent
   }
 ];

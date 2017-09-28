@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 export class ServiceService {
   userInfo: UserInfo;
   isLogin: boolean;
-  constructor() { 
+  constructor() {
     this.isLogin = false;
     this.userInfo = new UserInfo();
   }
@@ -14,4 +14,5 @@ export class ServiceService {
 class UserInfo {
   id: number;
   username: string;
+  nickname: string;
 }

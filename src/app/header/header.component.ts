@@ -1,4 +1,5 @@
 import { Component, Output, EventEmitter, SimpleChanges } from '@angular/core';
+import {ServiceService} from "../service/service.service";
 
 @Component({
   selector: 'app-header',
@@ -8,7 +9,7 @@ import { Component, Output, EventEmitter, SimpleChanges } from '@angular/core';
 export class HeaderComponent {
   @Output()
   changeType: EventEmitter<boolean> = new EventEmitter();
-  constructor() { }
+  constructor(private service: ServiceService) { }
   toggle() {
     this.changeType.emit(true);
   }

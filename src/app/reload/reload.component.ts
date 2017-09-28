@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
 import { ServiceService } from '../service/service.service';
 import { Observable } from 'rxjs/Observable';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-reload',
@@ -11,7 +12,7 @@ import { Observable } from 'rxjs/Observable';
 export class ReloadComponent implements OnInit {
   obs: Observable<any>;
   subscription;
-  constructor(private http: Http, private service: ServiceService) {
+  constructor(private http: Http, private service: ServiceService, private router: Router) {
     this.obs = Observable.create(observer => observer.next(this.service.isLogin));
     this.subscription = this.obs.subscribe(value => console.log(value));
   }
@@ -19,10 +20,16 @@ export class ReloadComponent implements OnInit {
   ngOnInit() {
     this.http.post('http://localhost:1234/userInfo', {}).toPromise().then(response => {
       const res: Code = response.json();
-      console.log(res)
       if (res.code === 666) {
-        this.service.isLogin = true;
-        this.subscription.next(this.service.isLogin);
+        console.log(res)
+        if (res.var.username) {
+          this.service.isLogin = true;
+          this.service.userInfo = res.var;
+          this.subscription.next(this.service.isLogin);
+          this.router.navigate(['home']);
+        } else {
+          this.router.navigate(['login']);
+        }
       }
     });
   }
